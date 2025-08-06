@@ -1,0 +1,38 @@
+<nav>
+    <form method="Post" action="/getUser">
+        <input type="text" placeholder="enter student id..." name="id"/>
+        <input type="submit" value="search"/>
+    </form>
+</nav>
+<div>
+    <h1>Students</h1>
+</div>
+<div>
+    <% if(locals.data) %>
+    <% data.forEach(student => { %>
+        <div>
+            <div>
+                <h3><%= student.name %></h3>
+            </div>
+            <div>
+                <p><%= student.email %></p>
+            </div>
+            <div>
+                <a href="<%= `/editForm/${student.id}` %>">update</a>
+               <a href="<%= `/delete/${student.id}` %>">delete</a>
+            </div>
+        </div>
+
+    <%}); %>
+</div>
+
+<!--  -->
+
+<div>
+    <div>
+        <h4>Add new student</h4>
+    </div>
+    <div>
+        <a href="/addForm">Click here</a>
+    </div>
+</div>

@@ -1,0 +1,131 @@
+ import express from 'express';
+ import bodyParser from 'body-parser';
+ import axios from 'axios';
+
+ const app = express();
+ const port = 4000;
+
+ app.use(bodyParser.json());
+
+app.use(bodyParser.urlencoded({ extended: true }));
+
+
+// app.use((req, res, next) => {
+//   console.log('Headers:', req.headers);
+//   console.log('Body:', req.body);
+//   next();
+// });
+
+app.get("/", async (req, res) => {
+  try {
+    const response = await axios.get("http://localhost:3000/users");
+    const result = response.data;
+    console.log(result);
+    res.render("index.ejs", { data: result });
+  } catch (error) {
+    console.error("Failed to make request:", error.message);
+    res.render("index.ejs", {
+      error: error.message,
+    });
+  }
+});
+
+app.post("/getUser", async (req, res) => {
+    const id = req.body.id;
+  try {
+    const response = await axios.get(`http://localhost:3000/users/${id}`);
+    const result = response.data; 
+    console.log(result);
+    res.render("index.ejs", { data: result });
+  } catch (error) {
+    console.error("Failed to make request:", error.message);
+    res.render("index.ejs", {
+      error: error.message,
+    });
+  }
+});
+
+app.get("/addForm", (req, res) => {
+  res.render("addForm.ejs");
+})
+
+app.get(`/editForm/:id`, (req, res) => {
+  const id = req.params.id;
+  res.render("editForm.ejs", {id});
+})
+
+
+app.post("/add", async (req, res) => {
+  const { name, email } = req.body;
+  console.log(name, email);
+
+  try {
+    await axios.post("http://localhost:3000/create", { name, email });
+    res.redirect("/");
+  } catch (error) {
+    console.error("Failed to create user:", error.message);
+    res.redirect("/");
+  }
+});
+
+app.post("/edit", async (req, res) => {
+
+  const { id, name, email } = req.body;
+  console.log(id, name, email);
+  let updatedItem = {};
+
+  if(name && email){
+    console.log("working")
+     updatedItem = {
+      id: id,
+      email: email,
+      name: name
+    }
+  } else if(email && !name) {
+    console.log("working")
+  updatedItem = {
+      id: id,
+      email: email
+    }
+  } else if(name && !email) {
+    console.log("name here")
+  updatedItem = {
+      id: id,
+      name: name
+    }
+  } else {
+    console.log("no change made");
+    res.redirect("/add");
+  }
+
+  console.log(updatedItem)
+
+  try {
+    await axios.post("http://localhost:3000/update", updatedItem);
+    res.redirect("/");
+  } catch (error) {
+    console.error("Failed to update user:", error.message);
+    res.redirect("/");
+  }
+});
+
+app.get(`/delete/:id`, async (req, res) => {
+  const id = req.params.id;
+  console.log(id)
+  const itemId = {
+    id: id
+  }
+  
+  try {
+    await axios.post("http://localhost:3000/delete", itemId);
+    res.redirect("/");
+  } catch (error) {
+    console.error("Failed to update user:", error.message);
+    res.redirect("/");
+  }
+})
+
+ app.listen(port, () => {
+        console.log(`Server running on http://localhost:${port}`);
+    });
+
