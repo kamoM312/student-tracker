@@ -36,7 +36,7 @@
 
 
     <% } else if(locals.data) %>
-</div class="flex flex-vertical">
+<div class="flex flex-vertical">
 <% if(data.length < 1) { %>
     <p>No Students found</p>
 <% } else { %>
@@ -78,7 +78,35 @@
   
 </div>
 
+<!-- add new student  -->
 <div>
-    
+   <div>
+    <h1>Add new student</h1>
+</div>
+
+<div>
+    <form method="POST" action="/add" >
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" />
+        <label for="email">Email</label>
+        <input type="text" id="email" name="email" />
+        <label for="phone">Phone</label>
+        <input type="text" id="phone" name="phone" />
+        <label for="dob">Date of Birth</label>
+        <input type="text" id="dob" name="dob" />
+
+        <input type="submit" value="Save" />
+    </form>
+</div> 
+
+<!-- student details  -->
+<div>
+
+</div>
+
+<!-- confirm delete  -->
+ <div>
+
+ </div>
 
 </div>
