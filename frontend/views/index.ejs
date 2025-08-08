@@ -43,7 +43,7 @@
     <div class="student-container">
         <div class="student-header">
              <ul class="flex flex-horizontal">
-        <li>ID</li>
+        <li>iD</li>
         <li>Name</li>
         <li>Email</li>
         <li>Actions</li>
@@ -79,13 +79,16 @@
 </div>
 
 <!-- add new student  -->
-<div>
+ <div class="modal-background hidden">
+    <div class="flex flex-vertical createForm">
    <div>
     <h1>Add new student</h1>
 </div>
 
-<div>
-    <form method="POST" action="/add" >
+<hr>
+
+<div class="flex flex-vertical">
+    <form class="flex flex-vertical createFormBody" method="POST" action="/add" >
         <label for="name">Name</label>
         <input type="text" id="name" name="name" />
         <label for="email">Email</label>
@@ -98,6 +101,8 @@
         <input type="submit" value="Save" />
     </form>
 </div> 
+ </div>
+
 
 <!-- student details  -->
 <div>
@@ -105,8 +110,25 @@
 </div>
 
 <!-- confirm delete  -->
+ <% if(locals.data) { %>
  <div>
-
+    <div>
+        <div>
+            <h1>Confirm Delete</h1>
+        </div>
+        <hr>
+        <div>
+            <div>
+                <p>Are you sure you want to delte student - <%= student.name %></p>
+            </div>
+            <div>
+                <button>Cancel</button>
+                <button>Delete</button>
+            </div>
+        </div>
+    </div>
  </div>
+
+ <% } %>
 
 </div>

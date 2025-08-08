@@ -102,3 +102,42 @@ a {
     text-decoration: none;
     color: black;
 }
+
+.modal-background {
+    z-index: 2;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    margin: 0;
+    padding: 0;
+    background: gray;
+    display: flex;
+    align-items: center;
+}
+
+.createForm {
+    width: 60%;
+    margin: 0 auto;
+    /* gap: 20px; */
+    border: solid 1px;
+    padding: 10px;
+    height: 30vh;
+    background: white;
+}
+
+.createFormBody {
+    gap: 10px;
+}
+
+.createFormBody input[type="submit"] {
+    width: 30%;
+    /* margin: 0 auto; */
+    align-self: self-end;
+}
+
+.hidden {
+    display: none;
+}
