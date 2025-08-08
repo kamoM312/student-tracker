@@ -1,38 +1,84 @@
-<nav>
-    <form method="Post" action="/getUser">
-        <input type="text" placeholder="enter student id..." name="id"/>
-        <input type="submit" value="search"/>
-    </form>
-</nav>
-<div>
-    <h1>Students</h1>
+<%- include('partials/header.ejs') %>
+
+<div class="nav flex flex-horizontal">
+    <div>
+    <h1>Student Management</h1>
 </div>
+
+<div class="addStudent">
+   <div>
+        <a href="/addForm">Add New Student</a>
+    </div> 
+</div>
+</div>
+
+<hr>
+
+<div class="search">
+    <div>
+        <form method="Post" action="/getUser">
+        <input class="searchText" type="text" name="id"/>
+         <button class="searchButton" type="submit" >
+            <i class="fa fa-circle-thin"></i>
+        </button>
+    </form>
+    </div>
+</div>
+
+
+<!-- <div>
+    <h1>Students</h1>
+</div> -->
+<% if(locals.error) { %>
 <div>
-    <% if(locals.data) %>
-    <% data.forEach(student => { %>
-        <div>
+    <p><%= error.message %></p>
+</div>
+
+
+    <% } else if(locals.data) %>
+</div class="flex flex-vertical">
+<% if(data.length < 1) { %>
+    <p>No Students found</p>
+<% } else { %>
+    <div class="student-container">
+        <div class="student-header">
+             <ul class="flex flex-horizontal">
+        <li>ID</li>
+        <li>Name</li>
+        <li>Email</li>
+        <li>Actions</li>
+    </ul>
+        </div>
+
+        
+
+         <% data.forEach(student => { %>
+        <div class="flex flex-horizontal student-item">
             <div>
-                <h3><%= student.name %></h3>
+                <p><%= student.id %></p>
+            </div>
+            <div>
+                <p><%= student.name %></p>
             </div>
             <div>
                 <p><%= student.email %></p>
             </div>
             <div>
-                <a href="<%= `/editForm/${student.id}` %>">update</a>
+                <a href="<%= `/editForm/${student.id}/${student.name}/${student.email}` %>">update</a>
                <a href="<%= `/delete/${student.id}` %>">delete</a>
             </div>
         </div>
 
+        
+
     <%}); %>
+    <% } %>
+    </div>
+   
+  
 </div>
 
-<!--  -->
-
 <div>
-    <div>
-        <h4>Add new student</h4>
-    </div>
-    <div>
-        <a href="/addForm">Click here</a>
-    </div>
+    
+
 </div>

@@ -5,16 +5,13 @@
  const app = express();
  const port = 4000;
 
+ app.use(express.static('public'));
+
  app.use(bodyParser.json());
 
 app.use(bodyParser.urlencoded({ extended: true }));
 
 
-// app.use((req, res, next) => {
-//   console.log('Headers:', req.headers);
-//   console.log('Body:', req.body);
-//   next();
-// });
 
 app.get("/", async (req, res) => {
   try {
@@ -36,6 +33,10 @@ app.post("/getUser", async (req, res) => {
     const response = await axios.get(`http://localhost:3000/users/${id}`);
     const result = response.data; 
     console.log(result);
+    // if(result.length < 1){
+
+    //   res.render("index.ejs", {noResult: "No match found"})
+    // }
     res.render("index.ejs", { data: result });
   } catch (error) {
     console.error("Failed to make request:", error.message);
@@ -49,9 +50,11 @@ app.get("/addForm", (req, res) => {
   res.render("addForm.ejs");
 })
 
-app.get(`/editForm/:id`, (req, res) => {
+app.get(`/editForm/:id/:name/:email`, (req, res) => {
   const id = req.params.id;
-  res.render("editForm.ejs", {id});
+  const name = req.params.name;
+  const email = req.params.email;
+  res.render("editForm.ejs", {id, name, email});
 })
 
 

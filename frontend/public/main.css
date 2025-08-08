@@ -1,0 +1,104 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    /* margin: 0 5%; */
+}
+
+hr {
+    margin-bottom: 20px;
+}
+
+.flex {
+    display: flex;
+}
+
+.flex-vertical {
+    flex-direction: column;
+}
+
+.flex-horizontal {
+    flex-direction: row;
+}
+
+.nav {
+    justify-content: space-between;
+    padding: 20px 0;
+}
+
+div.nav.flex.flex-horizontal, div.student-container, .search {
+    margin: 0 20px;
+}
+
+.addStudent {
+    border: solid 1px black;
+    padding: 10px;
+}
+
+.search {
+    margin-bottom: 20px;
+    position: relative;
+}
+
+/* .searchText {
+    
+} */
+
+.searchButton {
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    background-color: white;
+    border: none;
+}
+
+.student-container {
+    border: solid 1px;
+}
+
+.student-header {
+    border-bottom: solid 1px;
+    justify-content: space-around;
+    background-color: #E5E4E2;
+}
+
+.student-item {
+    border-bottom: solid 1px gray;
+}
+
+ul {
+    list-style: none;
+}
+
+/* ul.flex.flex-horizontal > *, div.flex-horizontal.student-item > * {
+    flex-basis: 25%;
+} */
+
+ul.flex.flex-horizontal > li:first-child, div.flex-horizontal.student-item > div:first-child {
+    margin-left: 20px;
+    flex-basis: 20%;
+}
+
+ul.flex.flex-horizontal > li:nth-child(2), div.flex-horizontal.student-item > div:nth-child(2) {
+   flex-basis: 25%;
+}
+
+ul.flex.flex-horizontal > li:nth-child(3), div.flex-horizontal.student-item > div:nth-child(3) {
+    flex-basis: 35%;
+}
+
+ul.flex.flex-horizontal > li:nth-child(4), div.flex-horizontal.student-item > div:nth-child(4) {
+    flex-basis: 20%;
+}
+
+div.flex-horizontal.student-item > div {
+    display: flex;
+    gap: 20px;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
