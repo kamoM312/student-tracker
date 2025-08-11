@@ -112,7 +112,7 @@ app.post("/edit", async (req, res) => {
   }
 });
 
-app.get(`/delete/:id`, async (req, res) => {
+app.post(`/delete/:id`, async (req, res) => {
   const id = req.params.id;
   console.log(id)
   const itemId = {
