@@ -50,7 +50,7 @@
                data-name="<%= student.name %>"
                data-email="<%= student.email %>"
                data-phone="<%= student.phone %>"
-               data-dob="<%= student.date_of_birth.substring(0, 10) %>">
+               data-dob="<%= student.date_of_birth %>">
                View
             </a>
             <a href="#" class="edit-btn"
@@ -75,8 +75,8 @@
 
 <!-- view student modal  -->
 <div id="viewModal" class="modal-background hidden">
-    <div class="flex flex-vertical">
-        <div>
+    <div class="flex flex-vertical  createForm view-student-modal">
+        <div class="view-modal-header flex">
             <h1>Student Details</h1>
             <a href="/">Back List</a>
         </div>
@@ -84,7 +84,7 @@
         <div>
             <a href="/">Back to List</a>
         </div>
-        <div>
+        <div class="grid-container">
             <div>ID:</div>
             <div id="view-id"><p></p></div>
             <div>Name:</div>
@@ -153,10 +153,10 @@
     <h1>Confirm Delete</h1>
     <hr>
     <p id="delete-message"></p>
-    <div class="flex flex-horizontal">
+    <div class="flex flex-horizontal delete-modal-buttons">
       <button id="cancelDelete">Cancel</button>
       <form id="deleteForm" method="POST">
-        <input type="submit" value="Delete" />
+        <input type="submit" value="Delete"/>
       </form>
     </div>
   </div>

@@ -5,6 +5,7 @@
 
 body {
     /* margin: 0 5%; */
+    font-size: 1rem;
 }
 
 hr {
@@ -40,6 +41,10 @@ div.nav.flex.flex-horizontal, div.student-container, .search {
 .search {
     margin-bottom: 20px;
     position: relative;
+}
+
+input.searchText {
+    padding-left: 30px;
 }
 
 /* .searchText {
@@ -119,12 +124,12 @@ a {
 }
 
 .createForm {
-    width: 60%;
+    width: 300px;
     margin: 0 auto;
     /* gap: 20px; */
     border: solid 1px;
     padding: 10px;
-    height: 30vh;
+    /* height: 30vh; */
     background: white;
 }
 
@@ -140,4 +145,36 @@ a {
 
 .hidden {
     display: none;
+}
+
+.view-student-modal {
+    padding: 30px 10px;
+}
+
+.view-modal-header {
+    justify-content: space-between;
+    align-items: center;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    row-gap: 8px;
+}
+
+
+.delete-modal-buttons {
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+#cancelDelete, form#deleteForm > input {
+    padding: 6px;
+    background-color: white;
+    margin-bottom: 8px;
+    margin-top: 15px;
+}
+
+#deleteForm {
+
 }
