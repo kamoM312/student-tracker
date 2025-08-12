@@ -67,11 +67,19 @@ app.get(`/editForm/:id/:name/:email`, (req, res) => {
 
 
 app.post("/add", async (req, res) => {
-  const { name, email } = req.body;
-  console.log(name, email);
+  // const {name, email} = req.body;
+  const { name, email, phone, dob } = req.body;
+  const data = {
+    name: name,
+    email: email,
+    phone: phone,
+    date_of_birth: dob,
+  }
+
+  console.log("data: " + data);
 
   try {
-    await axios.post("http://localhost:3000/create", { name, email });
+    await axios.post("http://localhost:3000/create", { data });
     res.redirect("/");
   } catch (error) {
     console.error("Failed to create user:", error.message);

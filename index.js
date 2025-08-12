@@ -40,13 +40,14 @@
 
     // Create new user 
     app.post(`/create`, async (req, res) => {
-        console.log(req.body)
-        const name = req.body.name;
-        const email = req.body.email;
-        console.log(name);
-        console.log(email);
+        console.log(req.body.data)
+        const name = req.body.data.name;
+        const email = req.body.data.email;
+        const phone = req.body.data.phone;
+        const date = req.body.data.date_of_birth;
+
         try {
-            await dbPool.query(`INSERT INTO students (name, email) VALUES ('${name}', '${email}')`
+            await dbPool.query(`INSERT INTO students (name, email, phone, date_of_birth) VALUES ('${name}', '${email}', '${phone}', '${date}');`
             );
             res.json("success");
         } catch (error) {
