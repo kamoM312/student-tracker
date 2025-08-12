@@ -89,38 +89,43 @@ app.post("/add", async (req, res) => {
 
 app.post("/edit", async (req, res) => {
 
-  const { id, name, email } = req.body;
-  console.log(id, name, email);
-  let updatedItem = {};
-
-  if(name && email){
-    console.log("working")
-     updatedItem = {
-      id: id,
-      email: email,
-      name: name
-    }
-  } else if(email && !name) {
-    console.log("working")
-  updatedItem = {
-      id: id,
-      email: email
-    }
-  } else if(name && !email) {
-    console.log("name here")
-  updatedItem = {
-      id: id,
-      name: name
-    }
-  } else {
-    console.log("no change made");
-    res.redirect("/add");
+  const { id, name, email, phone, dob } = req.body;
+  const data = {
+    id: id,
+    name: name,
+    email: email,
+    phone: phone,
+    date_of_birth: dob,
   }
 
-  console.log(updatedItem)
+  // if(name && email){
+  //   console.log("working")
+  //    updatedItem = {
+  //     id: id,
+  //     email: email,
+  //     name: name
+  //   }
+  // } else if(email && !name) {
+  //   console.log("working")
+  // updatedItem = {
+  //     id: id,
+  //     email: email
+  //   }
+  // } else if(name && !email) {
+  //   console.log("name here")
+  // updatedItem = {
+  //     id: id,
+  //     name: name
+  //   }
+  // } else {
+  //   console.log("no change made");
+  //   res.redirect("/add");
+  // }
+
+  // console.log(updatedItem)
 
   try {
-    await axios.post("http://localhost:3000/update", updatedItem);
+    await axios.post("http://localhost:3000/update", { data });
     res.redirect("/");
   } catch (error) {
     console.error("Failed to update user:", error.message);

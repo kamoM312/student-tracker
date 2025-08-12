@@ -58,24 +58,16 @@
 
     // Update user 
     app.post('/update', async (req, res) => {
-        
-        const id = req.body.id;
-        const formName = req.body.name;
-        const formEmail = req.body.email;
+        const id = req.body.data.id;
+        const name = req.body.data.name;
+        const email = req.body.data.email;
+        const phone = req.body.data.phone;
+        const date = req.body.data.date_of_birth;
         // Get existing user details 
          try {
-            const student = await dbPool.query(`SELECT * FROM students WHERE id=${id};`
-            );
-            // console.log(student[0]);
-            const name = student[0][0].name;
-            const email = student[0][0].email;
-
-            const sName = formName || `${name}`;
-            const sEmail = formEmail || `${email}`;
-
             // Update user details 
             try {
-            await dbPool.query(`UPDATE students SET name='${sName}', email='${sEmail}' WHERE id='${id}';`);
+            await dbPool.query(`UPDATE students SET name='${name}', email='${email}', phone='${phone}', date_of_birth='${date}' WHERE id='${id}';`);
             res.json("Sucess");
         } catch (error) {
             console.error('Error updating user field(s):', error);
