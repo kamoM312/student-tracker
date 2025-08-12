@@ -157,7 +157,7 @@ a:not(.view-link) {
     display: none;
 }
 
-.view-student-modal {
+.view-student-modal:not(.hr) {
     padding: 20px 10px 30px;
 }
 
@@ -192,4 +192,14 @@ a:not(.view-link) {
 
 #deleteForm {
 
+}
+
+input {
+    border: solid 0.5px;
+    padding: 1px
+}
+
+#edit-name {
+   border: solid 0.5px;
+    padding: 1px 
 }
