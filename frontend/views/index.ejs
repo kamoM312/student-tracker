@@ -50,7 +50,7 @@
                data-name="<%= student.name %>"
                data-email="<%= student.email %>"
                data-phone="<%= student.phone %>"
-               data-dob="<%= student.date_of_birth %>">
+               data-dob="<%= student.date %>">
                View
             </a>
             <a href="#" class="edit-btn"
@@ -58,7 +58,7 @@
                data-name="<%= student.name %>"
                data-email="<%= student.email %>"
                data-phone="<%= student.phone %>"
-               data-dob="<%= student.date_of_birth %>">
+               data-dob="<%= student.date %>">
                Edit
             </a>
             <a href="#" class="delete-btn"
@@ -78,11 +78,11 @@
     <div class="flex flex-vertical  createForm view-student-modal">
         <div class="view-modal-header flex">
             <h1>Student Details</h1>
-            <a href="/">Back List</a>
+            <a class="view-link" href="/">Back List</a>
         </div>
         <hr>
         <div>
-            <a href="/">Back to List</a>
+            <a class="view-link" href="/">Back to List</a>
         </div>
         <div class="grid-container">
             <div>ID:</div>

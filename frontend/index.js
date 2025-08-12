@@ -17,7 +17,15 @@ app.get("/", async (req, res) => {
   try {
     const response = await axios.get("http://localhost:3000/users");
     const result = response.data;
-    console.log(result);
+    // console.log(result);
+    result.forEach(e => {
+      // console.log(e);
+      // console.log(e.date_of_birth.substring(0, 10));
+      e.date = e.date_of_birth.substring(0, 10);
+    });
+    // console.log(result[0].date_of_birth.substring(0, 10))
+    // const date = result[0].date_of_birth.substring(0, 10);
+    console.log(result)
     res.render("index.ejs", { data: result });
   } catch (error) {
     console.error("Failed to make request:", error.message);
