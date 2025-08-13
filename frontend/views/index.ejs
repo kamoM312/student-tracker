@@ -41,12 +41,13 @@
 
       <% data.forEach(student => { %>
         <div class="flex flex-horizontal student-item">
-          <div><p><%= student.id %></p></div>
+          <div><p><%= student.uid %></p></div>
           <div><p><%= student.name %></p></div>
           <div><p><%= student.email %></p></div>
           <div>
             <a href="#" class="view-btn"
             data-id="<%= student.id %>"
+            data-uid="<%= student.uid %>"
                data-name="<%= student.name %>"
                data-email="<%= student.email %>"
                data-phone="<%= student.phone %>"
@@ -177,7 +178,7 @@
   document.querySelectorAll('.view-btn').forEach(btn => {
     btn.addEventListener('click', e => {
       e.preventDefault();
-      document.querySelector('#view-id').textContent = btn.dataset.id;
+      document.querySelector('#view-id').textContent = btn.dataset.uid;
       document.querySelector('#view-name').textContent = btn.dataset.name;
       document.querySelector('#view-email').textContent = btn.dataset.email;
       document.querySelector('#view-phone').textContent = btn.dataset.phone;

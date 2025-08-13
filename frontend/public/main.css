@@ -178,6 +178,8 @@ a:not(.view-link) {
     align-self: self-end;
     margin-bottom: 10px;
     margin-top: 10px;
+
+    font-weight: 600;
 }
 
 .hidden {
@@ -235,9 +237,18 @@ a:not(.view-link) {
     border: solid #353935 1px;
 }
 
+form#deleteForm > input {
+    font-weight: 600;
+}
+
 #delete-message {
     margin-left: 10px;
 }
+
+/* #cancelDelete {
+    border-top: solid black 1px;
+    border: solid #353935 1px;
+} */
 
 #deleteForm {
 
